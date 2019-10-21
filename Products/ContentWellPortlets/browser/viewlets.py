@@ -1,7 +1,6 @@
 from Products.CMFCore.utils import getToolByName
 from Products.ContentWellPortlets import messageFactory as _
 from fractions import Fraction
-from plone.app.controlpanel.interfaces import IPloneControlPanelView
 from plone.app.layout.viewlets.common import ViewletBase
 from plone.app.portlets.browser import interfaces as pap_interfaces
 from plone.app.portlets.browser.interfaces import IManagePortletsView
@@ -11,6 +10,10 @@ from zope.component import getMultiAdapter
 from zope.component import ComponentLookupError
 from zope.component import getUtility
 
+try:
+    from Products.CMFPlone.interfaces.controlpanel import IPloneControlPanelView
+except ImportError:
+    from plone.app.controlpanel.interfaces import IPloneControlPanelView
 
 class ContentWellPortletsViewlet(ViewletBase):
     name = ""
